@@ -3,6 +3,7 @@ from constants import *
 from player import *
 from asteroidfield import AsteroidField
 from asteroid import Asteroid
+import sys
 
 def main():
     print("Starting Asteroids!")
@@ -43,8 +44,15 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        
         screen.fill("black")
         updatable.update(dt)
+        
+        for asteroid in asteroids:
+            if player.is_colliding(asteroid):
+                print("Game Over!")
+                sys.exit(0)
+
         for drawable_object in drawable:
             drawable_object.draw(screen)
         pygame.display.update()
