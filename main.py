@@ -14,7 +14,8 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
-    
+    shots = pygame.sprite.Group()
+
     # Adding containers to player
     Player.containers = (updatable,drawable)
 
@@ -23,6 +24,9 @@ def main():
 
     # Adding containers to asteroid field
     AsteroidField.containers = (updatable)
+    
+    # Adding containers to shots
+    Shot.containers = (shots,updatable, drawable)
 
     # Initializing the pygame modules
     pygame.init()
